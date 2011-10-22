@@ -17,35 +17,24 @@ fun compile_time_version_string ()
       end
 
 
-fun surface_create_pdf filename width_in_points height_in_points
+fun surface_create_pdf (filename, width_in_points, height_in_points)
     = let val f = _import "cairo_pdf_surface_create" public: CString.p * real * real -> surface;
       in CString.app (fn p => (f (p, width_in_points, height_in_points))) (CString.fromString filename)
       end
 
 val create = _import "cairo_create" public: surface -> canvas;
-
+val set_source_rgb = _import "cairo_set_source_rgb" public: canvas * real * real * real -> unit;
 val fill = _import "cairo_fill" public: canvas -> unit;
-
-fun set_source_rgb canvas r g b
-    = let val f = _import "cairo_set_source_rgb" public: canvas * real * real * real -> unit;
-      in f (canvas, r, g, b)
-      end
-
+val fill_preserve = _import "cairo_fill_preserve" public: canvas -> unit;
+val set_line_width = _import "cairo_set_line_width" public: canvas * real -> unit;
+val stroke = _import "cairo_stroke" public: canvas -> unit;
+val move_to = _import "cairo_move_to" public: canvas * real * real -> unit;
+val line_to = _import "cairo_line_to" public: canvas * real * real -> unit;
+val curve_to = _import "cairo_curve_to" public: canvas * real * real * real * real * real * real -> unit;
+val close_path = _import "cairo_close_path" public: canvas -> unit;
+val save = _import "cairo_save" public: canvas -> unit;
+val restore = _import "cairo_restore" public: canvas -> unit;
 val show_page = _import "cairo_show_page" public: canvas -> unit;
-
 val surface_finish = _import "cairo_surface_finish" public: surface -> unit;
-
-val _ =
-    (print ("run: " ^ Int.toString (run_time_version ()) ^ "\n");
-     print ("run: " ^ run_time_version_string () ^ "\n");
-     print ("comp: " ^ Int.toString (compile_time_version ()) ^ "\n");
-     print ("comp: " ^ compile_time_version_string () ^ "\n");
-     let val s = (surface_create_pdf "test.pdf" 72.0 72.0)
-         val c = (create s) in
-     (set_source_rgb c 0.5 0.5 0.5;
-      fill c;
-      show_page c;
-      surface_finish s)
-     end)
 
 end

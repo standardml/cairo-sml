@@ -41,7 +41,7 @@ sig
      * @param width_in_points Page width in points.
      * @param height_in_points Page height in points.
      *)
-    val surface_create_pdf : string -> real -> real -> surface
+    val surface_create_pdf : string * real * real -> surface
 
     (**
      * Create a canvas from a surface.
@@ -49,11 +49,17 @@ sig
     val create : surface -> canvas
 
     (* Consult Cairo docs for the following *)
+    val set_source_rgb : canvas * real * real * real -> unit
     val fill : canvas -> unit
-
-    val set_source_rgb : canvas -> real -> real -> real -> unit
-
+    val fill_preserve : canvas -> unit
+    val set_line_width : canvas * real -> unit
+    val stroke : canvas -> unit
+    val move_to : canvas * real * real -> unit
+    val line_to : canvas * real * real -> unit
+    val curve_to : canvas * real * real * real * real * real * real -> unit
+    val close_path : canvas -> unit
+    val save : canvas -> unit
+    val restore : canvas -> unit
     val show_page : canvas -> unit
-
     val surface_finish : surface -> unit
 end

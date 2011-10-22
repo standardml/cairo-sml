@@ -1,0 +1,10 @@
+library
+  library(FFI/cairo-sml.cm)
+  signature CAIRO
+  structure Cairo
+is
+  src/cairo-sig.sml
+  src/cairo-smlnj.sml
+  $/basis.cm
+  $c/c.cm
+  FFI/cairo-sml.cm : make (-f src/cairo-smlnj.make)

@@ -1,0 +1,5 @@
+Group
+  structure Test
+is
+  ../cairo-sml.cm
+  basket.sml

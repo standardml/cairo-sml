@@ -1,0 +1,6 @@
+Group
+  structure Test
+is
+  ../cairo-sml.cm
+  version.sml
+  $/basis.cm

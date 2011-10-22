@@ -3,6 +3,8 @@
 (* the GNU Lesser General Public License version 2.1 *)
 (* The file is Copyright © 2004-2005 Olivier Andrieu *)
 
+structure Test = struct
+
 val x_inches = 8.0
 val y_inches = 3.0
 val width_in_points  = x_inches * 72.0
@@ -23,10 +25,12 @@ fun draw c =
   Cairo.set_source_rgb (c, 0.0, 0.0, 0.0) ;
   Cairo.stroke c)
 
-val _ =
+fun run () =
     (let val s = (Cairo.surface_create_pdf ("basket.pdf", width_in_points, height_in_points))
          val c = (Cairo.create s) in
      (draw c;
       Cairo.show_page c;
       Cairo.surface_finish s)
     end)
+
+end

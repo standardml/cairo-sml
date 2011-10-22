@@ -1,3 +1,17 @@
+(**
+ * Cairo bindings for Standard ML.
+ * 
+ * This provides a fairly one-to-one mapping between the Cairo C
+ * library and Standard ML. The implementation structure is closely
+ * based on that of cairo-ocaml. Currently there is a MLton and SML/NJ
+ * implementation.
+ *
+ * @see <a href="http://cairographics.org/">Cairo</a>
+ * @see <a href="http://cairographics.org/cairo-ocaml/">cairo-ocaml</a>
+ * @author Mathias Rav <rav@cs.au.dk>
+ * @author Ian Zerny <ian@zerny.dk>
+ * @version 0.0.1
+ *)
 signature CAIRO =
 sig
     (**

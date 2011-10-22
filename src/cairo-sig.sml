@@ -2,9 +2,8 @@
  * Cairo bindings for Standard ML.
  * 
  * This provides a fairly one-to-one mapping between the Cairo C
- * library and Standard ML. The implementation structure is closely
- * based on that of cairo-ocaml. Currently there is a MLton and SML/NJ
- * implementation.
+ * library and Standard ML. This library is similar in structure to
+ * cairo-ocaml. Currently there is a MLton and SML/NJ implementation.
  *
  * @see <a href="http://cairographics.org/">Cairo</a>
  * @see <a href="http://cairographics.org/cairo-ocaml/">cairo-ocaml</a>

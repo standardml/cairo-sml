@@ -1,0 +1,9 @@
+$(SML_LIB)/basis/basis.mlb
+$(SML_LIB)/basis/mlton.mlb
+
+src/cairo-sig.sml
+
+ann "allowFFI true" in
+  src/cstring-mlton.sml
+  src/cairo-mlton.sml
+end

@@ -8,3 +8,4 @@ $(TESTS):
 
 clean:
 	rm -f $(TESTS) $(TESTBASES) basket.pdf
+	rm -rf .cm

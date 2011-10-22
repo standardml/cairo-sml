@@ -1,18 +1,18 @@
 signature CAIRO =
 sig
     (**
+     * Cairo type.
+     *
+     * Corresponds to cairo_t.
+     *)
+    type t
+
+    (**
      * Cairo surface type.
      *
      * Corresponds to cairo_surface_t.
      *)
     type surface
-
-    (**
-     * Cairo type.
-     *
-     * Corresponds to cairo_t.
-     *)
-    type canvas
 
     (**
      * Get the Cairo runtime version as an integer
@@ -44,22 +44,22 @@ sig
     val surface_create_pdf : string * real * real -> surface
 
     (**
-     * Create a canvas from a surface.
+     * Create a t from a surface.
      *)
-    val create : surface -> canvas
+    val create : surface -> t
 
     (* Consult Cairo docs for the following *)
-    val set_source_rgb : canvas * real * real * real -> unit
-    val fill : canvas -> unit
-    val fill_preserve : canvas -> unit
-    val set_line_width : canvas * real -> unit
-    val stroke : canvas -> unit
-    val move_to : canvas * real * real -> unit
-    val line_to : canvas * real * real -> unit
-    val curve_to : canvas * real * real * real * real * real * real -> unit
-    val close_path : canvas -> unit
-    val save : canvas -> unit
-    val restore : canvas -> unit
-    val show_page : canvas -> unit
+    val set_source_rgb : t * real * real * real -> unit
+    val fill : t -> unit
+    val fill_preserve : t -> unit
+    val set_line_width : t * real -> unit
+    val stroke : t -> unit
+    val move_to : t * real * real -> unit
+    val line_to : t * real * real -> unit
+    val curve_to : t * real * real * real * real * real * real -> unit
+    val close_path : t -> unit
+    val save : t -> unit
+    val restore : t -> unit
+    val show_page : t -> unit
     val surface_finish : surface -> unit
 end

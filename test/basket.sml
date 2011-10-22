@@ -1,4 +1,4 @@
-(* This file is derived from the cario-ocaml project *)
+(* This file is derived from the cairo-ocaml project *)
 (* and is free software, licensed under the terms of *)
 (* the GNU Lesser General Public License version 2.1 *)
 (* The file is Copyright © 2004-2005 Olivier Andrieu *)

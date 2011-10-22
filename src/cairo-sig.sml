@@ -75,4 +75,16 @@ sig
     val restore : t -> unit
     val show_page : t -> unit
     val surface_finish : surface -> unit
+
+    datatype font_slant
+      = FONT_SLANT_NORMAL
+      | FONT_SLANT_ITALIC
+      | FONT_SLANT_OBLIQUE
+
+    datatype font_weight
+      = FONT_WEIGHT_NORMAL
+      | FONT_WEIGHT_BOLD
+
+    val select_font_face : t * string * font_slant * font_weight -> unit
+
 end

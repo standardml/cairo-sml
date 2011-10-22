@@ -4,6 +4,7 @@ library
   structure Cairo
 is
   src/cairo-sig.sml
+  src/cairo-common.sml
   src/smlnj/cairo-smlnj.sml
   $/basis.cm
   $c/c.cm

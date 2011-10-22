@@ -1,10 +1,11 @@
 structure Cairo : CAIRO =
 struct
 
+open Cairo_Common
+
 type 'a ptr = ('a, C.rw) C.su_obj C.ptr'
 
 type t = ST__cairo.tag ptr
-type canvas = t
 type surface = ST__cairo_surface.tag ptr
 
 val run_time_version = Int32.toInt o F_cairo_version.f
@@ -31,5 +32,10 @@ val curve_to = F_cairo_curve_to.f'
 val close_path = F_cairo_close_path.f'
 val save = F_cairo_save.f'
 val restore = F_cairo_restore.f'
+
+(* FIXME: memory leak? *)
+fun select_font_face (ctx, font, slant, weight)
+  = F_cairo_select_font_face.f'
+        (ctx, ZString.dupML' font, font_slant_to_int slant, font_weight_to_int weight)
 
 end

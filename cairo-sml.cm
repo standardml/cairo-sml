@@ -4,7 +4,7 @@ library
   structure Cairo
 is
   src/cairo-sig.sml
-  src/cairo-smlnj.sml
+  src/smlnj/cairo-smlnj.sml
   $/basis.cm
   $c/c.cm
-  FFI/cairo-sml.cm : make (-f src/cairo-smlnj.make)
+  FFI/cairo-sml.cm : make (-f src/smlnj/cairo-smlnj.make)

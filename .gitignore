@@ -7,3 +7,5 @@ doc/module-list
 test/basket
 test/basket.pdf
 test/version
+test/*.mlton.sml
+test/*.mlb

@@ -1,14 +1,14 @@
-.PHONY: mlton doc clean test
+.PHONY: mlton smlnj doc clean test
 
 mlton:
-	mlton -link-opt -lcairo cairo-sml.mlb src/cairo-mlton.c
+	mlton -link-opt -lcairo cairo-sml.mlb src/mlton/cairo-mlton.c
 	make -C test $@
 
 smlnj:
 	sml cairo-sml.cm
 
 test: mlton
-	./cairo-sml && test -f test.pdf && echo -e "\nPDF successfully generated!"
+	make -C test $@
 
 doc:
 	make -C doc $@
@@ -16,6 +16,6 @@ doc:
 clean:
 	rm -f cairo-sml
 	rm -rf FFI
-	rm -rf src/.cm
+	rm -rf src/smlnj/.cm
 	make -C doc $@
 	make -C test $@

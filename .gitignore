@@ -1,4 +1,6 @@
 cairo-sml
 doc/*.html
 doc/module-list
-test.pdf
+test/basket
+test/basket.pdf
+test/version

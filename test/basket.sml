@@ -1,3 +1,8 @@
+(* This file is derived from the cario-ocaml project *)
+(* and is free software, licensed under the terms of *)
+(* the GNU Lesser General Public License version 2.1 *)
+(* The file is Copyright © 2004-2005 Olivier Andrieu *)
+
 val x_inches = 8.0
 val y_inches = 3.0
 val width_in_points  = x_inches * 72.0

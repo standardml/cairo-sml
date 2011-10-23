@@ -2,6 +2,7 @@ $(SML_LIB)/basis/basis.mlb
 $(SML_LIB)/basis/mlton.mlb
 
 src/cairo-sig.sml
+src/cairo-common.sml
 
 ann "allowFFI true" in
   src/mlton/cstring-mlton.sml

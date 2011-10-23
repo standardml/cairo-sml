@@ -1,6 +1,8 @@
 structure Cairo :> CAIRO =
 struct
 
+    open Cairo_Common
+
     type surface = MLton.Pointer.t
     type t = MLton.Pointer.t
 
@@ -36,5 +38,13 @@ val save = _import "cairo_save" public: t -> unit;
 val restore = _import "cairo_restore" public: t -> unit;
 val show_page = _import "cairo_show_page" public: t -> unit;
 val surface_finish = _import "cairo_surface_finish" public: surface -> unit;
+
+fun select_font_face (ctx, font, slant, weight)
+   = let val f = _import "cairo_select_font_face" public: t * CString.p * int * int -> unit;
+         val font' = CString.fromString font
+         val slant' = font_slant_to_int slant
+         val weight' = font_weight_to_int weight
+     in CString.app (fn p => f (ctx, p, slant', weight')) font'
+     end
 
 end

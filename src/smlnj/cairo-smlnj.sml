@@ -1,4 +1,4 @@
-structure Cairo : CAIRO =
+structure Cairo :> CAIRO =
 struct
 
 open Cairo_Common
@@ -33,9 +33,11 @@ val close_path = F_cairo_close_path.f'
 val save = F_cairo_save.f'
 val restore = F_cairo_restore.f'
 
-(* FIXME: memory leak? *)
 fun select_font_face (ctx, font, slant, weight)
-  = F_cairo_select_font_face.f'
-        (ctx, ZString.dupML' font, font_slant_to_int slant, font_weight_to_int weight)
+  = let val font' = ZString.dupML' font (* FIXME: memory leak? *)
+        val slant' = Int32.fromInt (font_slant_to_int slant)
+        val weight' = Int32.fromInt (font_weight_to_int weight)
+    in F_cairo_select_font_face.f' (ctx, font', slant', weight')
+    end
 
 end

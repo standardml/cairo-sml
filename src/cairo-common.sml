@@ -1,6 +1,13 @@
 structure Cairo_Common =
 struct
 
+type point = real * real
+
+datatype path
+  = MOVE_TO of point
+  | LINE_TO of point
+  | CLOSE
+
 datatype font_slant
   = FONT_SLANT_NORMAL
   | FONT_SLANT_ITALIC
@@ -10,31 +17,12 @@ datatype font_weight
   = FONT_WEIGHT_NORMAL
   | FONT_WEIGHT_BOLD
 
-exception Invalid_font_slant
-exception Invalid_font_weight
-
-fun font_slant_to_int slant
-  = (case slant
-      of FONT_SLANT_NORMAL => 0
-       | FONT_SLANT_OBLIQUE => 1
-       | FONT_SLANT_ITALIC => 2)
-
-fun int_to_font_slant i
-  = (case i
-      of 0 => FONT_SLANT_NORMAL
-       | 1 => FONT_SLANT_OBLIQUE
-       | 2 => FONT_SLANT_ITALIC
-       | _ => raise Invalid_font_slant)
-
-fun font_weight_to_int weight
-  = (case weight
-      of FONT_WEIGHT_NORMAL => 400
-       | FONT_WEIGHT_BOLD   => 700)
-
-fun int_to_font_weight i
-  = (case i
-      of 400 => FONT_WEIGHT_NORMAL
-       | 700 => FONT_WEIGHT_BOLD
-       | _   => raise Invalid_font_weight)
+type text_extents
+  = { x_bearing : real,
+      y_bearing : real,
+      width     : real,
+      height    : real,
+      x_advance : real,
+      y_advance : real }
 
 end
